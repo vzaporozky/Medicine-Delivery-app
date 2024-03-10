@@ -1,12 +1,21 @@
 import { Link } from "react-router-dom";
-import "../../App.css";
+import Header from "../../components/header/Header";
+import pagesStore from "../../store/pagesStore";
+import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 
-function Cart() {
+const Cart = observer(() => {
+   useEffect(() => {
+      pagesStore.changePage("Cart");
+   }, []);
+
    return (
       <>
+         <Header />
+         <p>CART</p>
          <Link to="/shop">shop</Link>
       </>
    );
-}
+});
 
 export default Cart;

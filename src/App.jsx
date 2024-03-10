@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import "./App.css";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./normalize.css";
+import "./App.css";
 
 function App() {
    const navigate = useNavigate();
@@ -8,8 +9,6 @@ function App() {
    useEffect(() => {
       navigate("/shop");
    }, []);
-
-   return <></>;
 }
 
 export default App;

@@ -1,16 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Shop from "../pages/shop/shop";
-import Cart from "../pages/cart/cart";
+import ShopPage from "../pages/Shop/ShopPage";
+import Cart from "../pages/Cart/Cart";
+import ErrorPage from "../pages/Error/Error";
 
 export const router = createBrowserRouter([
    {
       path: "/",
       element: <App />,
+      errorElement: <ErrorPage />,
    },
    {
       path: "/shop",
-      element: <Shop />,
+      element: <ShopPage />,
    },
    {
       path: "/cart",
