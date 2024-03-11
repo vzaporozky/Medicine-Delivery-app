@@ -11,8 +11,12 @@ const Drugs = observer(() => {
       );
 
       if (foundItem)
-         cartStore.updateCartItemQuantity(medicine.name, foundItem.count + 1);
-      else cartStore.addToCart({ ...medicine, count: 1 });
+         cartStore.updateCartItemQuantity(
+            medicine.name,
+            foundItem.quantity + 1,
+            medicine.price
+         );
+      else cartStore.addToCart({ ...medicine, quantity: 1 });
 
       cartStore.setTotalPrice(cartStore.totalPrice + medicine.price);
    };

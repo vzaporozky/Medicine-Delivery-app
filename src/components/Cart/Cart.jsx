@@ -21,13 +21,14 @@ const Cart = observer(() => {
                      <p>{drug.price}</p>
                      <input
                         type="number"
-                        name="count"
-                        value={drug.count}
-                        className={cl.medicine_count}
+                        name="quantity"
+                        value={drug.quantity}
+                        className={cl.medicine_quantity}
                         onChange={(el) => {
                            cartStore.updateCartItemQuantity(
                               drug.name,
-                              Number(el.target.value)
+                              Number(el.target.value),
+                              drug.price
                            );
                         }}
                      />

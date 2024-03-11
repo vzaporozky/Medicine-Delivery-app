@@ -16,10 +16,14 @@ class cartStore {
       this.cart.push(item);
    }
 
-   updateCartItemQuantity(name, quantity) {
+   updateCartItemQuantity(name, quantity, price) {
       const item = this.cart.find((item) => item.name === name);
 
-      if (item) item.count = quantity;
+      quantity > item.quantity
+         ? (this.totalPrice += price)
+         : (this.totalPrice -= price);
+
+      if (item) item.quantity = quantity;
       if (quantity <= 0) {
          const id = this.cart.findIndex((item) => item.name === name);
          this.cart.splice(id, 1);
@@ -28,6 +32,9 @@ class cartStore {
 
    removeItem(name) {
       const id = this.cart.findIndex((item) => item.name === name);
+      const price = this.cart[id].price;
+      const quantity = this.cart[id].quantity;
+      this.totalPrice -= quantity * price;
       this.cart.splice(id, 1);
    }
 
