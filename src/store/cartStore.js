@@ -13,6 +13,7 @@ class cartStore {
    }
 
    addToCart(item) {
+      this.totalPrice += item.price;
       this.cart.push(item);
    }
 
