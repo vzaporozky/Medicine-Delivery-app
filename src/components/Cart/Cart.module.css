@@ -42,3 +42,16 @@
    max-width: 100%;
    flex-grow: 1;
 }
+
+.remove {
+   background: none;
+   border: 1px solid black;
+   border-radius: 5px;
+   transition: 0.3s;
+   cursor: pointer;
+}
+
+.remove:hover {
+   background-color: red;
+   color: white;
+}

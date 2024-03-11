@@ -9,12 +9,13 @@ const Cart = observer(() => {
 
          <div className={cl.medicines}>
             {cartStore.cart.map((drug) => (
-               <div className={cl.medicine}>
+               <div className={cl.medicine} key={drug.name}>
                   <img
                      src="./src/assets/vitamin_c.jpg"
                      className={cl.image}
                      alt="drug-image"
                   />
+
                   <div className={cl.description}>
                      <h4>{drug.name}</h4>
                      <p>{drug.price}</p>
@@ -23,8 +24,21 @@ const Cart = observer(() => {
                         name="count"
                         value={drug.count}
                         className={cl.medicine_count}
+                        onChange={(el) => {
+                           cartStore.updateCartItemQuantity(
+                              drug.name,
+                              Number(el.target.value)
+                           );
+                        }}
                      />
                   </div>
+
+                  <button
+                     className={cl.remove}
+                     onClick={(el) => cartStore.removeItem(drug.name)}
+                  >
+                     X
+                  </button>
                </div>
             ))}
          </div>

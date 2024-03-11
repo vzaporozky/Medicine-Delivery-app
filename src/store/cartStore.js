@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 class cartStore {
    cart = [];
+   totalPrice = 0;
 
    constructor() {
       makeAutoObservable(this);
@@ -17,9 +18,21 @@ class cartStore {
 
    updateCartItemQuantity(name, quantity) {
       const item = this.cart.find((item) => item.name === name);
-      if (item) {
-         item.count = quantity;
+
+      if (item) item.count = quantity;
+      if (quantity <= 0) {
+         const id = this.cart.findIndex((item) => item.name === name);
+         this.cart.splice(id, 1);
       }
+   }
+
+   removeItem(name) {
+      const id = this.cart.findIndex((item) => item.name === name);
+      this.cart.splice(id, 1);
+   }
+
+   setTotalPrice(newPrice) {
+      this.totalPrice = newPrice;
    }
 }
 

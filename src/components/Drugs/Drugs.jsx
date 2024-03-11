@@ -13,6 +13,8 @@ const Drugs = observer(() => {
       if (foundItem)
          cartStore.updateCartItemQuantity(medicine.name, foundItem.count + 1);
       else cartStore.addToCart({ ...medicine, count: 1 });
+
+      cartStore.setTotalPrice(cartStore.totalPrice + medicine.price);
    };
 
    return (
@@ -22,7 +24,7 @@ const Drugs = observer(() => {
          <div className={cl.medicines}>
             {shopStore.shops[shopStore.currentShop].medicines.map(
                (medicine) => (
-                  <div className={cl.medicine} key={medicine.id}>
+                  <div className={cl.medicine} key={medicine.name}>
                      <img
                         className={cl.image}
                         src="./src/assets/vitamin_c.jpg"

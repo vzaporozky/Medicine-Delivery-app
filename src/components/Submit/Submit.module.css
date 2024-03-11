@@ -1,0 +1,10 @@
+.submit_form {
+   display: flex;
+   justify-content: end;
+   align-items: center;
+   padding: 15px;
+}
+
+.price {
+   margin-right: 15px;
+}
