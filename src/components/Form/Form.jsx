@@ -8,14 +8,12 @@ const Form = observer(() => {
       <div className={cl.form}>
          <h2>Form</h2>
 
-         <div>
-            {formLabels.map((label) => (
-               <div className={cl.input}>
-                  <p>{label}</p>
-                  <input type="text" placeholder="input" />
-               </div>
-            ))}
-         </div>
+         {formLabels.map((label) => (
+            <div className={cl.input} key={label}>
+               <p>{label}</p>
+               <input type="text" placeholder="input" />
+            </div>
+         ))}
       </div>
    );
 });

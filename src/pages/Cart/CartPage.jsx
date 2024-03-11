@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import Form from "./../../components/Form/Form";
 import cl from "./CartPage.module.css";
+import Cart from "./../../components/Cart/Cart";
 
 const CartPage = observer(() => {
    useEffect(() => {
@@ -15,6 +16,7 @@ const CartPage = observer(() => {
          <Header />
          <div className={cl.wrapper}>
             <Form />
+            <Cart />
          </div>
       </>
    );

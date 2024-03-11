@@ -7,8 +7,19 @@ class cartStore {
       makeAutoObservable(this);
    }
 
-   addToCart(payload) {
-      this.cart.push(payload);
+   setCart(payload) {
+      this.cart = payload;
+   }
+
+   addToCart(item) {
+      this.cart.push(item);
+   }
+
+   updateCartItemQuantity(name, quantity) {
+      const item = this.cart.find((item) => item.name === name);
+      if (item) {
+         item.count = quantity;
+      }
    }
 }
 
