@@ -1,4 +1,4 @@
-.shops {
+.form {
    border: 1px solid black;
    padding: 15px;
    border-radius: 15px;
@@ -6,16 +6,9 @@
    width: 600px;
 }
 
-.shop {
+.input {
    padding: 5px;
-   border: 1px solid black;
-   border-radius: 5px;
    margin-bottom: 15px;
    cursor: pointer;
    transition: 0.3s;
-}
-
-.shop:hover {
-   background-color: rgb(117, 117, 213);
-   color: white;
 }

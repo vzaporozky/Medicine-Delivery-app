@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
 import Header from "../../components/header/Header";
 import pagesStore from "../../store/pagesStore";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import Form from "./../../components/Form/Form";
+import cl from "./CartPage.module.css";
 
-const Cart = observer(() => {
+const CartPage = observer(() => {
    useEffect(() => {
       pagesStore.changePage("Cart");
    }, []);
@@ -12,10 +13,11 @@ const Cart = observer(() => {
    return (
       <>
          <Header />
-         <p>CART</p>
-         <Link to="/shop">shop</Link>
+         <div className={cl.wrapper}>
+            <Form />
+         </div>
       </>
    );
 });
 
-export default Cart;
+export default CartPage;
