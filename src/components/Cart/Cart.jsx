@@ -1,15 +1,28 @@
 import { observer } from "mobx-react-lite";
 import cl from "./Cart.module.css";
 import cartStore from "../../store/cartStore";
+import { useEffect } from "react";
 
 const Cart = observer(() => {
+   useEffect(() => {
+      const cartStored = localStorage.getItem("cart");
+      if (cartStored) {
+         const parsedCart = JSON.parse(cartStored);
+         cartStore.setCart(parsedCart);
+      }
+   }, []);
+
+   const removeItemFromCart = (name) => {
+      cartStore.removeItem(name);
+   };
+
    return (
       <div className={cl.cart}>
          <h2>CART</h2>
 
          <div className={cl.medicines}>
             {cartStore.cart.map((drug) => (
-               <div className={cl.medicine} key={drug.name}>
+               <div className={cl.medicine} key={drug.name + "s"}>
                   <img
                      src="./src/assets/vitamin_c.jpg"
                      className={cl.image}
@@ -18,7 +31,7 @@ const Cart = observer(() => {
 
                   <div className={cl.description}>
                      <h4>{drug.name}</h4>
-                     <p>{drug.price}</p>
+                     <p>{drug.price} грн.</p>
                      <input
                         type="number"
                         name="quantity"
@@ -36,7 +49,7 @@ const Cart = observer(() => {
 
                   <button
                      className={cl.remove}
-                     onClick={(el) => cartStore.removeItem(drug.name)}
+                     onClick={() => removeItemFromCart(drug.name)}
                   >
                      X
                   </button>

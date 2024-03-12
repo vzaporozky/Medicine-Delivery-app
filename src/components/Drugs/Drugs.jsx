@@ -18,13 +18,18 @@ const Drugs = observer(() => {
          (item) => item.name === medicine.name
       );
 
-      if (foundItem)
+      if (foundItem) {
          cartStore.updateCartItemQuantity(
             medicine.name,
             foundItem.quantity + 1,
             medicine.price
          );
-      else cartStore.addToCart({ ...medicine, quantity: 1 });
+      } else {
+         cartStore.addToCart({ ...medicine, quantity: 1 });
+      }
+
+      // Update localStorage
+      localStorage.setItem("cart", JSON.stringify(cartStore.cart));
    };
 
    return (

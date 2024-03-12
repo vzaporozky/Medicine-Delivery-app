@@ -13,8 +13,21 @@ class cartStore {
    }
 
    addToCart(item) {
-      this.totalPrice += item.price;
-      this.cart.push(item);
+      const foundItem = this.cart.find(
+         (cartItem) => cartItem.name === item.name
+      );
+      if (foundItem) {
+         this.updateCartItemQuantity(
+            item.name,
+            foundItem.quantity + 1,
+            item.price
+         );
+      } else {
+         this.totalPrice += item.price;
+         this.cart.push({ ...item, quantity: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(this.cart));
    }
 
    updateCartItemQuantity(name, quantity, price) {
@@ -29,6 +42,8 @@ class cartStore {
          const id = this.cart.findIndex((item) => item.name === name);
          this.cart.splice(id, 1);
       }
+
+      localStorage.setItem("cart", JSON.stringify(this.cart));
    }
 
    removeItem(name) {
@@ -37,6 +52,8 @@ class cartStore {
       const quantity = this.cart[id].quantity;
       this.totalPrice -= quantity * price;
       this.cart.splice(id, 1);
+
+      localStorage.setItem("cart", JSON.stringify(this.cart));
    }
 
    setTotalPrice(newPrice) {
