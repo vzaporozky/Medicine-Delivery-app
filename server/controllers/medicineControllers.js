@@ -2,17 +2,42 @@ const { Medicine } = require("../models/models");
 const ApiError = require("../error/ApiError");
 
 class medicineControllers {
-   async create(req, res, next) {
+   async createOne(req, res, next) {
       try {
-         let { name, price, shopId } = req.body;
+         let { name, price, shopId, isFavorite } = req.body;
 
          const medicine = await Medicine.create({
             name,
             price,
             shopId,
+            isFavorite,
          });
+         // console.log(shopId);
 
          return res.json(medicine);
+      } catch (e) {
+         next(ApiError.badRequest(e.message));
+      }
+   }
+
+   async createFew(req, res, next) {
+      try {
+         let { medicines } = req.body;
+         // let { name, price, shopId }
+         const createdMedicine = [];
+
+         for (let item of medicines) {
+            let { name, price, isFavorite, shopId } = item;
+            let medicine = await Medicine.create({
+               name,
+               price,
+               shopId,
+               isFavorite,
+            });
+            createdMedicine.push(medicine);
+         }
+
+         res.json(createdMedicine);
       } catch (e) {
          next(ApiError.badRequest(e.message));
       }
@@ -22,6 +47,7 @@ class medicineControllers {
       try {
          const { shopId } = req.params;
          const medicine = await Medicine.findByPk(shopId);
+         console.log(shopId); ///////////
 
          if (!medicine) {
             throw ApiError.notFound(`Магазин с ID ${shopId} не найден`);

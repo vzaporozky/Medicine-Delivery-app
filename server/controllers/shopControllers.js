@@ -16,19 +16,19 @@ class ShopControllers {
          const device = await Shop.create({
             name,
             address,
-            medicines,
+            // medicines,
          });
 
-         if (medicines) {
-            medicines = JSON.parse(medicines);
-            medicines.forEach((i) =>
-               DeviceInfo.create({
-                  name: i.name,
-                  description: i.description,
-                  price: i.price,
-               })
-            );
-         }
+         // if (medicines) {
+         //    medicines = JSON.parse(medicines);
+         //    medicines.forEach((i) =>
+         //       DeviceInfo.create({
+         //          name: i.name,
+         //          description: i.description,
+         //          price: i.price,
+         //       })
+         //    );
+         // }
 
          return res.json(device);
       } catch (e) {

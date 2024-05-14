@@ -8,6 +8,11 @@ const User = sequelize.define("user", {
    role: { type: DataTypes.STRING, defaultValue: "USER" },
 });
 
+const Type = sequelize.define("type", {
+   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+   name: { type: DataTypes.STRING, unique: true, allowNull: false },
+});
+
 const Cart = sequelize.define("cart", {
    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
    name: { type: DataTypes.STRING, allowNull: true },
@@ -15,8 +20,12 @@ const Cart = sequelize.define("cart", {
 
 const Medicine = sequelize.define("medicine", {
    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-   name: { type: DataTypes.STRING, unique: true, allowNull: false },
+   name: { type: DataTypes.STRING, allowNull: false },
    price: { type: DataTypes.INTEGER, allowNull: false },
+   isFavorite: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+   },
 });
 
 const Shop = sequelize.define("shop", {
@@ -25,14 +34,14 @@ const Shop = sequelize.define("shop", {
    address: { type: DataTypes.STRING, unique: true, allowNull: false },
 });
 
-// User.hasOne(Cart);
-// Cart.belongsTo(User);
-
-// Cart.hasMany(Medicine);
-// Medicine.belongsTo(Cart);
+User.hasOne(Cart);
+Cart.belongsTo(User);
 
 Shop.hasMany(Medicine);
 Medicine.belongsTo(Shop);
+
+// Cart.hasMany(Medicine);
+// Medicine.belongsTo(Cart);
 
 module.exports = {
    User,
