@@ -1,10 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
 import ShopPage from "../pages/Shop/ShopPage";
 import CartPage from "../pages/Cart/CartPage";
 import ErrorPage from "../pages/Error/Error";
 import LoginPage from "../pages/Login/LoginPage";
-import RegisterPage from "../pages/Register/RegisterPage";
+import RegistrationPage from "../pages/Register/RegistrationPage";
 
 export const authRouts = createBrowserRouter([
    // {
@@ -23,7 +22,7 @@ export const authRouts = createBrowserRouter([
    },
 ]);
 
-export const notAuthRouts = createBrowserRouter([
+export const publicRouts = createBrowserRouter([
    // {
    //    path: "/",
    //    element: <App />,
@@ -35,11 +34,14 @@ export const notAuthRouts = createBrowserRouter([
       errorElement: <ErrorPage />,
    },
    {
+      path: "/cart",
+   },
+   {
       path: "/login",
       element: <LoginPage />,
    },
    {
-      path: "/register",
-      element: <RegisterPage />,
+      path: "/registration",
+      element: <RegistrationPage />,
    },
 ]);

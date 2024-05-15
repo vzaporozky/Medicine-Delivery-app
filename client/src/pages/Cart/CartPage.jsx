@@ -6,10 +6,18 @@ import cl from "./CartPage.module.css";
 import Cart from "./../../components/Cart/Cart";
 import Submit from "./../../components/Submit/Submit";
 import { Context } from "../../main";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = observer(() => {
-   const { pagesStore } = useContext(Context);
+   const { pagesStore, userStore } = useContext(Context);
+   console.log(userStore.isAuth);
 
+   if (!userStore.isAuth) {
+      const navigate = useNavigate();
+      useEffect(() => {
+         navigate("/login");
+      }, []);
+   }
    useEffect(() => {
       pagesStore.changePage("Cart");
    }, []);
