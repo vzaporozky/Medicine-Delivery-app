@@ -11,7 +11,7 @@ export default function ErrorPage() {
             <i>{error.statusText || error.message}</i>
          </p>
 
-         <Link to="/shop">Return to the Shop</Link>
+         <Link to="/">Return to the Shop</Link>
       </div>
    );
 }

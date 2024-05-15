@@ -1,10 +1,12 @@
 import { observer } from "mobx-react-lite";
 import cl from "./Submit.module.css";
 import Button from "./../../ui/Button/Button";
-import cartStore from "../../store/cartStore";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { Context } from "../../main";
 
 const Submit = observer(() => {
+   const { cartStore } = useContext(Context);
+
    useEffect(() => {
       const cart = JSON.parse(localStorage.getItem("cart"));
       let price = 0;

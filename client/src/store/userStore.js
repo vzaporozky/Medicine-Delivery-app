@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-class PagesStore {
+class UserStore {
    pageName = "shop";
 
    constructor() {
@@ -12,4 +12,4 @@ class PagesStore {
    }
 }
 
-export default PagesStore;
+export default UserStore;

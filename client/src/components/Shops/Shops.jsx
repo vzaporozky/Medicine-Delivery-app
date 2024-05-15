@@ -1,9 +1,11 @@
 import { observer } from "mobx-react-lite";
 import cl from "./Shops.module.css";
-import shopStore from "../../store/shopStore";
-import Button from "../../ui/Button/Button";
+import { useContext } from "react";
+import { Context } from "../../main";
 
 const Shops = observer(() => {
+   const { shopStore } = useContext(Context);
+
    const handleClick = (shop) => {
       shopStore.changeShop(shop.id);
    };

@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import cl from "./Drugs.module.css";
-import shopStore from "../../store/shopStore";
+// import shopStore from "../../store/shopStore";
 import cartStore from "../../store/cartStore";
 import Button from "../../ui/Button/Button";
+import { Context } from "../../main";
 
 const Drugs = observer(() => {
+   const { shopStore } = useContext(Context);
    const {
       shops,
       currentShop,

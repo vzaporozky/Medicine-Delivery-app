@@ -1,9 +1,11 @@
 import { observer } from "mobx-react-lite";
 import cl from "./Cart.module.css";
-import cartStore from "../../store/cartStore";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { Context } from "../../main";
 
 const Cart = observer(() => {
+   const { cartStore } = useContext(Context);
+
    useEffect(() => {
       const cartStored = localStorage.getItem("cart");
       if (cartStored) {

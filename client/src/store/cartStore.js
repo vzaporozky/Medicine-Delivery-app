@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-class cartStore {
+class CartStore {
    cart = [];
    totalPrice = 0;
 
@@ -61,4 +61,4 @@ class cartStore {
    }
 }
 
-export default new cartStore();
+export default CartStore;

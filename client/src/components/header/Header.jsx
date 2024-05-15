@@ -6,7 +6,7 @@ import { observer } from "mobx-react-lite";
 const Header = observer(() => {
    return (
       <div className={cl.header}>
-         <LinkTo to="/shop" name="Shop" />
+         <LinkTo to="/" name="Shop" />
          <span> | </span>
          <LinkTo to="/cart" name="Cart" />
       </div>

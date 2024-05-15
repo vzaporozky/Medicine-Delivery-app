@@ -113,4 +113,4 @@ class ShopStore {
    };
 }
 
-export default new ShopStore();
+export default ShopStore;
