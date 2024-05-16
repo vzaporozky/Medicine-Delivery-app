@@ -1,9 +1,8 @@
 import { makeAutoObservable } from "mobx";
 
 class PagesStore {
-   pageName = "shop";
-
    constructor() {
+      this.pageName = "shop";
       makeAutoObservable(this);
    }
 
