@@ -4,32 +4,42 @@ import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 import { Context } from "../../store";
 
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
+
 const Header = observer(() => {
    const { userStore } = useContext(Context);
 
    return (
-      <>
-         {userStore ? (
-            <div className={cl.header}>
-               <LinkTo to="/" name="Shop" />
-               {userStore.isAuth ? (
-                  <>
-                     <span> | </span>
-                     <LinkTo to="/cart" name="Cart" />
-                  </>
-               ) : (
-                  <>
-                     <span> | </span>
-                     <LinkTo to="/login" name="login" />
-                     <span> | </span>
-                     <LinkTo to="/registration" name="registration" />
-                  </>
-               )}
-            </div>
-         ) : (
-            <p>loading..</p>
-         )}
-      </>
+      <Navbar expand="lg" bg="dark" variant="dark">
+         <Container>
+            <Navbar.Brand as={Link} to="/">
+               Shop
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+               <Nav className="me-auto">
+                  {userStore.isAuth ? (
+                     <Nav.Link as={Link} to="/cart">
+                        Cart
+                     </Nav.Link>
+                  ) : (
+                     <>
+                        <Nav.Link as={Link} to="/login">
+                           Login
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="/registration">
+                           Registration
+                        </Nav.Link>
+                     </>
+                  )}
+               </Nav>
+            </Navbar.Collapse>
+         </Container>
+      </Navbar>
    );
 });
 

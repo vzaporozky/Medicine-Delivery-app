@@ -2,6 +2,7 @@ import Header from "../../components/header/Header";
 import { observer } from "mobx-react-lite";
 import cl from "./LoginForm.module.css";
 import LinkTo from "../../ui/LinkTo/LinkTo";
+import Button from "react-bootstrap/Button";
 
 const LoginForm = observer(() => {
    return (
@@ -28,7 +29,7 @@ const LoginForm = observer(() => {
                   <LinkTo to="/register" name="Registration" />
                </div>
 
-               <button className={cl.form_button}>Log In</button>
+               <Button variant="dark">Log In</Button>
             </div>
          </div>
       </div>
