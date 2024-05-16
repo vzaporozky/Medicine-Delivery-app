@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import cl from "./Submit.module.css";
 import Button from "./../../ui/Button/Button";
 import { useContext, useEffect } from "react";
-import { Context } from "../../main";
+import { Context } from "../../store";
 
 const Submit = observer(() => {
    const { cartStore } = useContext(Context);

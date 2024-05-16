@@ -35,6 +35,7 @@ export const publicRouts = createBrowserRouter([
    },
    {
       path: "/cart",
+      element: <CartPage />,
    },
    {
       path: "/login",

@@ -61,4 +61,4 @@ class CartStore {
    }
 }
 
-export default CartStore;
+export default new CartStore();

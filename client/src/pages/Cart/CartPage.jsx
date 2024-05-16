@@ -5,7 +5,7 @@ import Form from "./../../components/Form/Form";
 import cl from "./CartPage.module.css";
 import Cart from "./../../components/Cart/Cart";
 import Submit from "./../../components/Submit/Submit";
-import { Context } from "../../main";
+import { Context } from "../../store";
 import { useNavigate } from "react-router-dom";
 
 const CartPage = observer(() => {

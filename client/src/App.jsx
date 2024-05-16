@@ -1,19 +1,13 @@
-import React, { useContext, useEffect } from "react";
-import { RouterProvider, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { RouterProvider } from "react-router-dom";
 import "./normalize.css";
 import "./App.css";
 import { authRouts, publicRouts } from "./router/router";
 import { observer } from "mobx-react-lite";
-import { Context } from "./main";
+import { Context } from "./store";
 
 const App = observer(() => {
    const { userStore } = useContext(Context);
-
-   if (!userStore) return <>Loading..</>;
-
-   // useEffect(() => {
-   //    if (!userStore) return <>Loading..</>;
-   // }, []);
 
    return (
       <>
@@ -22,7 +16,6 @@ const App = observer(() => {
          ) : (
             <RouterProvider router={publicRouts} />
          )}
-         {/* <RouterProvider router={publicRouts} /> */}
       </>
    );
 });

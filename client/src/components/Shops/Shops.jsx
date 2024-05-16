@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import cl from "./Shops.module.css";
 import { useContext } from "react";
-import { Context } from "../../main";
+import { Context } from "../../store";
 
 const Shops = observer(() => {
    const { shopStore } = useContext(Context);

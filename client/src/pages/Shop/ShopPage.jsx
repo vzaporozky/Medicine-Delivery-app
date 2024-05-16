@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import Shops from "./../../components/Shops/Shops";
 import cl from "./ShopPage.module.css";
 import Drugs from "./../../components/Drugs/Drugs";
-import { Context } from "../../main";
+import { Context } from "../../store";
 
 const ShopPage = observer(() => {
    const { pagesStore } = useContext(Context);

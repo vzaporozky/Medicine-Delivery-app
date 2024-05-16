@@ -12,4 +12,4 @@ class PagesStore {
    }
 }
 
-export default PagesStore;
+export default new PagesStore();

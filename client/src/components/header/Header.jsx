@@ -3,7 +3,7 @@ import cl from "./Header.module.css";
 import LinkTo from "../../ui/LinkTo/LinkTo";
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect } from "react";
-import { Context } from "../../main";
+import { Context } from "../../store";
 
 const Header = observer(() => {
    const { userStore } = useContext(Context);

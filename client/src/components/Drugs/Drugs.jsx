@@ -4,7 +4,7 @@ import cl from "./Drugs.module.css";
 // import shopStore from "../../store/shopStore";
 import cartStore from "../../store/cartStore";
 import Button from "../../ui/Button/Button";
-import { Context } from "../../main";
+import { Context } from "../../store";
 
 const Drugs = observer(() => {
    const { shopStore } = useContext(Context);
