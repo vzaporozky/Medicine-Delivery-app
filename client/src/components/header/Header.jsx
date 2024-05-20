@@ -1,13 +1,11 @@
-import cl from "./Header.module.css";
-import LinkTo from "../../ui/LinkTo/LinkTo";
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
+
 import { Context } from "../../store";
 
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
 const Header = observer(() => {
@@ -19,7 +17,7 @@ const Header = observer(() => {
             <Navbar.Brand as={Link} to="/">
                Shop
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
             <Navbar.Collapse id="basic-navbar-nav">
                <Nav className="me-auto">
                   {userStore.isAuth ? (
