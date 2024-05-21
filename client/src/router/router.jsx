@@ -2,47 +2,43 @@ import { createBrowserRouter } from "react-router-dom";
 import ShopPage from "../pages/Shop/ShopPage";
 import CartPage from "../pages/Cart/CartPage";
 import ErrorPage from "../pages/Error/Error";
-import LoginPage from "../pages/Login/LoginPage";
-import RegistrationPage from "../pages/Register/RegistrationPage";
+import AuthPage from "../pages/AuthPage/AuthPage";
+
+import {
+   CART_ROUTE,
+   LOGIN_ROUTE,
+   REGISTRATION_ROUTE,
+   SHOP_ROUTE,
+} from "../utils/consts";
 
 export const authRouts = createBrowserRouter([
-   // {
-   //    path: "/",
-   //    element: <App />,
-   //    errorElement: <ErrorPage />,
-   // },
    {
-      path: "/",
+      path: SHOP_ROUTE,
       element: <ShopPage />,
       errorElement: <ErrorPage />,
    },
    {
-      path: "/cart",
+      path: CART_ROUTE,
       element: <CartPage />,
    },
 ]);
 
 export const publicRouts = createBrowserRouter([
-   // {
-   //    path: "/",
-   //    element: <App />,
-   //    errorElement: <ErrorPage />,
-   // },
    {
-      path: "/",
+      path: SHOP_ROUTE,
       element: <ShopPage />,
       errorElement: <ErrorPage />,
    },
    {
-      path: "/cart",
+      path: CART_ROUTE,
       element: <CartPage />,
    },
    {
-      path: "/login",
-      element: <LoginPage />,
+      path: LOGIN_ROUTE,
+      element: <AuthPage />,
    },
    {
-      path: "/registration",
-      element: <RegistrationPage />,
+      path: REGISTRATION_ROUTE,
+      element: <AuthPage />,
    },
 ]);

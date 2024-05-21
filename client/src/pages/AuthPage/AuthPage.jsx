@@ -1,16 +1,16 @@
 import Header from "../../components/header/Header";
 import { observer } from "mobx-react-lite";
-import cl from "./RegistrationPage.module.css";
-import RegistrationForm from "./../../components/RegistrationForm/RegistrationForm";
+import cl from "./AuthPage.module.css";
+import AuthForm from "../../components/AuthForm/AuthForm";
 import { useContext, useEffect } from "react";
 import { Context } from "../../store";
 import { Container } from "react-bootstrap";
 
-const RegistrationPage = observer(() => {
+const AuthPage = observer(() => {
    const { pagesStore } = useContext(Context);
 
    useEffect(() => {
-      pagesStore.changePage("registration");
+      pagesStore.changePage("login");
    }, []);
 
    return (
@@ -20,10 +20,10 @@ const RegistrationPage = observer(() => {
             className="d-flex justify-content-center align-items-center"
             style={{ height: window.innerHeight - 154 }}
          >
-            <RegistrationForm />
+            <AuthForm />
          </Container>
       </>
    );
 });
 
-export default RegistrationPage;
+export default AuthPage;

@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
-import cl from "./RegistrationForm.module.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import cl from "./AuthForm.module.css";
 
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -8,13 +9,20 @@ import Row from "react-bootstrap/Row";
 
 import { useContext } from "react";
 import { Context } from "../../store";
+import { LOGIN_ROUTE } from "../../utils/consts";
 
-const RegistrationForm = observer(() => {
+const AuthForm = observer(() => {
    const { userStore } = useContext(Context);
+
+   const location = useLocation();
+   const isLogin = location.pathname === LOGIN_ROUTE;
+
+   const navigate = useNavigate();
 
    const handleClick = (event) => {
       event.preventDefault();
       userStore.setIsAuth(true);
+      navigate("/");
    };
 
    return (
@@ -25,9 +33,6 @@ const RegistrationForm = observer(() => {
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                      <Form.Label>Email address</Form.Label>
                      <Form.Control type="email" placeholder="Enter email" />
-                     <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                     </Form.Text>
                   </Form.Group>
                </Col>
 
@@ -45,11 +50,11 @@ const RegistrationForm = observer(() => {
                onClick={handleClick}
                className="ml-auto"
             >
-               Sign up
+               {isLogin ? " Sign in" : "Sign up"}
             </Button>
          </Form>
       </div>
    );
 });
 
-export default RegistrationForm;
+export default AuthForm;
