@@ -4,6 +4,7 @@ import cl from "./RegistrationPage.module.css";
 import RegistrationForm from "./../../components/RegistrationForm/RegistrationForm";
 import { useContext, useEffect } from "react";
 import { Context } from "../../store";
+import { Container } from "react-bootstrap";
 
 const RegistrationPage = observer(() => {
    const { pagesStore } = useContext(Context);
@@ -15,9 +16,12 @@ const RegistrationPage = observer(() => {
    return (
       <>
          <Header />
-         <div className={cl.wrapper}>
+         <Container
+            className="d-flex justify-content-center align-items-center"
+            style={{ height: window.innerHeight - 154 }}
+         >
             <RegistrationForm />
-         </div>
+         </Container>
       </>
    );
 });

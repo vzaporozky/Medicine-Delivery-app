@@ -1,14 +1,22 @@
-import Header from "../header/Header";
 import { observer } from "mobx-react-lite";
 import cl from "./RegistrationForm.module.css";
-import LinkTo from "../../ui/LinkTo/LinkTo";
 
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
+import { useContext } from "react";
+import { Context } from "../../store";
+
 const RegistrationForm = observer(() => {
+   const { userStore } = useContext(Context);
+
+   const handleClick = (event) => {
+      event.preventDefault();
+      userStore.setIsAuth(true);
+   };
+
    return (
       <div className={cl.form}>
          <Form>
@@ -31,40 +39,16 @@ const RegistrationForm = observer(() => {
                </Col>
             </Row>
 
-            <Button variant="dark" type="submit" className="ml-auto">
-               Submit
+            <Button
+               variant="dark"
+               type="submit"
+               onClick={handleClick}
+               className="ml-auto"
+            >
+               Sign up
             </Button>
          </Form>
       </div>
-      // <div className={cl.wrapper}>
-      //    <div className={cl.form}>
-      //       <div className={cl.form_wrapper}>
-      //          <p className={cl.form_text}>Registration</p>
-
-      //          <div className={cl.form_inputs}>
-      //             <input
-      //                className={cl.form_email}
-      //                type="text"
-      //                placeholder="Enter your Email"
-      //             />
-      //             <input
-      //                className={cl.form_password}
-      //                type="password"
-      //                placeholder="Enter your Password"
-      //             />
-      //          </div>
-
-      //          <div className={cl.form_footer}>
-      //             <div>
-      //                <p>You have account?</p>
-      //                <LinkTo to="/login" name="Login" />
-      //             </div>
-
-      //             <Button variant="danger">Sign up</Button>
-      //          </div>
-      //       </div>
-      //    </div>
-      // </div>
    );
 });
 

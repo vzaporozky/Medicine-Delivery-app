@@ -11,6 +11,10 @@ import { Link } from "react-router-dom";
 const Header = observer(() => {
    const { userStore } = useContext(Context);
 
+   const handleClick = (event) => {
+      userStore.setIsAuth(false);
+   };
+
    return (
       <Navbar expand="lg" bg="dark" variant="dark">
          <Container>
@@ -18,24 +22,25 @@ const Header = observer(() => {
                Shop
             </Navbar.Brand>
 
-            <Navbar.Collapse id="basic-navbar-nav">
-               <Nav className="me-auto">
-                  {userStore.isAuth ? (
-                     <Nav.Link as={Link} to="/cart">
-                        Cart
-                     </Nav.Link>
-                  ) : (
-                     <>
-                        <Nav.Link as={Link} to="/login">
-                           Login
-                        </Nav.Link>
-                        <Nav.Link as={Link} to="/registration">
-                           Registration
-                        </Nav.Link>
-                     </>
-                  )}
+            {userStore.isAuth ? (
+               <Nav className="ml-auto">
+                  <Nav.Link as={Link} to="/cart">
+                     Cart
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/" onClick={handleClick}>
+                     Exit
+                  </Nav.Link>
                </Nav>
-            </Navbar.Collapse>
+            ) : (
+               <Nav className="ml-auto">
+                  <Nav.Link as={Link} to="/login">
+                     Login
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/registration">
+                     Registration
+                  </Nav.Link>
+               </Nav>
+            )}
          </Container>
       </Navbar>
    );
