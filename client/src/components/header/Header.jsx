@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Header = observer(() => {
    const { userStore } = useContext(Context);
@@ -27,9 +28,17 @@ const Header = observer(() => {
                   <Nav.Link as={Link} to="/cart">
                      Cart
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/" onClick={handleClick}>
-                     Exit
+                  <Nav.Link as={Link} to="/admin">
+                     Admin
                   </Nav.Link>
+                  <Button
+                     variant={"outline-danger"}
+                     as={Link}
+                     to="/"
+                     onClick={handleClick}
+                  >
+                     Exit
+                  </Button>
                </Nav>
             ) : (
                <Nav className="ml-auto">

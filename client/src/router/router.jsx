@@ -3,8 +3,10 @@ import ShopPage from "../pages/Shop/ShopPage";
 import CartPage from "../pages/Cart/CartPage";
 import ErrorPage from "../pages/Error/Error";
 import AuthPage from "../pages/AuthPage/AuthPage";
+import Admin from "../pages/Admin/Admin";
 
 import {
+   ADMIN_ROUTE,
    CART_ROUTE,
    LOGIN_ROUTE,
    REGISTRATION_ROUTE,
@@ -20,6 +22,10 @@ export const authRouts = createBrowserRouter([
    {
       path: CART_ROUTE,
       element: <CartPage />,
+   },
+   {
+      path: ADMIN_ROUTE,
+      element: <Admin />,
    },
 ]);
 
