@@ -80,14 +80,14 @@ const CreateDrug = ({ show, onHide }) => {
                      {/* {device.selectedBrand.name || "Choose type"} */}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                     {/* {device.brands.map((brand) => (
+                     {device.brands.map((brand) => (
                         <Dropdown.Item
                            onClick={() => device.setSelectedBrand(brand)}
                            key={brand.id}
                         >
                            {brand.name}
                         </Dropdown.Item>
-                     ))} */}
+                     ))}
                   </Dropdown.Menu>
                </Dropdown>
                <Form.Control
