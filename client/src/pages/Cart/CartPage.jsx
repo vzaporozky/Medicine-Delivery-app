@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 const CartPage = observer(() => {
    const { pagesStore, userStore } = useContext(Context);
-   console.log(userStore.isAuth);
 
    if (!userStore.isAuth) {
       const navigate = useNavigate();
