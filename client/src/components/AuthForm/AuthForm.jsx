@@ -9,7 +9,7 @@ import Row from "react-bootstrap/Row";
 
 import { useContext, useState } from "react";
 import { Context } from "../../store";
-import { LOGIN_ROUTE } from "../../utils/consts";
+import { LOGIN_ROUTE, SHOP_ROUTE } from "../../utils/consts";
 import { login, registration } from "../../http/userAPI";
 
 const AuthForm = observer(() => {
@@ -23,18 +23,22 @@ const AuthForm = observer(() => {
    const navigate = useNavigate();
 
    const handleClick = async (event) => {
-      event.preventDefault();
+      try {
+         let data;
+         if (isLogin) {
+            data = await login(email, password);
+         } else {
+            data = await registration(email, password);
+         }
 
-      if (isLogin) {
-         const response = await login(email, password);
-         console.log(response);
-      } else {
-         const response = await registration(email, password);
-         console.log(response);
+         navigate(SHOP_ROUTE);
+         setTimeout(() => {
+            userStore.setIsAuth(true);
+            userStore.setUser(userStore);
+         }, 0);
+      } catch (e) {
+         alert(e.response.data.message);
       }
-
-      userStore.setIsAuth(true);
-      navigate("/");
    };
 
    return (
@@ -64,7 +68,7 @@ const AuthForm = observer(() => {
                </Form.Group>
             </Row>
 
-            <Button variant="dark" type="submit" onClick={handleClick}>
+            <Button variant="dark" onClick={handleClick}>
                {isLogin ? " Sign in" : "Sign up"}
             </Button>
          </Form>

@@ -1,13 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import "./normalize.css";
 import "./App.css";
 import { authRouts, publicRouts } from "./router/router";
 import { observer } from "mobx-react-lite";
 import { Context } from "./store";
+import { Spinner } from "react-bootstrap";
+import { check } from "./http/userAPI";
 
 const App = observer(() => {
-   const { userStore } = useContext(Context);
+   const { userStore, pagesStore } = useContext(Context);
+
+   useEffect(() => {
+      const token = localStorage.getItem("token");
+
+      if (token) {
+         check()
+            .then((data) => {
+               userStore.setUser(true);
+               userStore.setIsAuth(true);
+            })
+            .catch(() => {});
+      }
+
+      pagesStore.setLoading(false);
+   }, []);
+
+   if (pagesStore.loading) {
+      return <Spinner animation={"grow"} />;
+   }
 
    return (
       <>

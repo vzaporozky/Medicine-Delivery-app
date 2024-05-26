@@ -13,7 +13,7 @@ import {
 } from "react-bootstrap";
 
 const CreateDrug = ({ show, onHide }) => {
-   const { device } = useContext(Context);
+   const { shopStore } = useContext(Context);
    const [name, setName] = useState("");
    const [price, setPrice] = useState(0);
    const [file, setFile] = useState(null);
@@ -80,12 +80,12 @@ const CreateDrug = ({ show, onHide }) => {
                      {/* {device.selectedBrand.name || "Choose type"} */}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                     {device.brands.map((brand) => (
+                     {shopStore.medicines.map((medicine) => (
                         <Dropdown.Item
-                           onClick={() => device.setSelectedBrand(brand)}
-                           key={brand.id}
+                        // onClick={() => shopStore.setSelectedBrand(medicine)}
+                        // key={medicine.id}
                         >
-                           {brand.name}
+                           {medicine.name}
                         </Dropdown.Item>
                      ))}
                   </Dropdown.Menu>

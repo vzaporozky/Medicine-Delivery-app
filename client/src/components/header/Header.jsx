@@ -12,8 +12,10 @@ import { Button } from "react-bootstrap";
 const Header = observer(() => {
    const { userStore } = useContext(Context);
 
-   const handleClick = (event) => {
+   const logOut = (event) => {
+      userStore.setUser({});
       userStore.setIsAuth(false);
+      localStorage.setItem("token", "");
    };
 
    return (
@@ -35,7 +37,7 @@ const Header = observer(() => {
                      variant={"outline-danger"}
                      as={Link}
                      to="/"
-                     onClick={handleClick}
+                     onClick={logOut}
                   >
                      Exit
                   </Button>
