@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import ShopPage from "../pages/Shop/ShopPage";
 import CartPage from "../pages/Cart/CartPage";
 import ErrorPage from "../pages/Error/Error";
-import AuthPage from "../pages/AuthPage/AuthPage";
+import Auth from "../pages/Auth/Auth";
 import Admin from "../pages/Admin/Admin";
 
 import {
@@ -41,10 +41,10 @@ export const publicRouts = createBrowserRouter([
    },
    {
       path: LOGIN_ROUTE,
-      element: <AuthPage />,
+      element: <Auth />,
    },
    {
       path: REGISTRATION_ROUTE,
-      element: <AuthPage />,
+      element: <Auth />,
    },
 ]);

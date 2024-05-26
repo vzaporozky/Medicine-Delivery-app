@@ -1,12 +1,11 @@
 import Header from "../../components/header/Header";
 import { observer } from "mobx-react-lite";
-import cl from "./AuthPage.module.css";
 import AuthForm from "../../components/AuthForm/AuthForm";
 import { useContext, useEffect } from "react";
 import { Context } from "../../store";
 import { Container } from "react-bootstrap";
 
-const AuthPage = observer(() => {
+const Auth = observer(() => {
    const { pagesStore } = useContext(Context);
 
    useEffect(() => {
@@ -26,4 +25,4 @@ const AuthPage = observer(() => {
    );
 });
 
-export default AuthPage;
+export default Auth;
