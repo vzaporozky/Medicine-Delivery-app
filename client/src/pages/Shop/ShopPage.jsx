@@ -6,11 +6,15 @@ import Shops from "./../../components/Shops/Shops";
 import cl from "./ShopPage.module.css";
 import Drugs from "./../../components/Drugs/Drugs";
 import { Context } from "../../store";
+import { fetchClocks } from "../../http/clock";
 
 const ShopPage = observer(() => {
-   const { pagesStore } = useContext(Context);
+   const { pagesStore, shopStore } = useContext(Context);
    useEffect(() => {
       pagesStore.changePage("Shop");
+
+      fetchMedicines().then((data) => shopStore.setShopsFetched(data));
+      fetchMedicines().then((data) => shopStore.setMedicinesFetched(data));
    }, []);
 
    return (

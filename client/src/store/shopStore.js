@@ -58,7 +58,24 @@ class ShopStore {
    currentShop = 0;
 
    constructor() {
+      this.shops;
+      this.shopsFetched = [];
+      this.medicinesFetched = [];
       makeAutoObservable(this);
+   }
+
+   get shopsFetched() {
+      return this.shopsFetched;
+   }
+   get medicinesFetched() {
+      return this.medicinesFetched;
+   }
+
+   setShopsFetched(shops) {
+      this.shops = shops;
+   }
+   setMedicinesFetched(medicines) {
+      this.medicines = medicines;
    }
 
    changeShop(payload) {
