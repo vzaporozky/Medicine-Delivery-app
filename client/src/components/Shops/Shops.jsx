@@ -1,14 +1,23 @@
 import { observer } from "mobx-react-lite";
 import cl from "./Shops.module.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../../store";
+import { fetchMedicines } from "../../http/clock";
 
 const Shops = observer(() => {
-   const { shopStore } = useContext(Context);
+   const { pagesStore, shopStore } = useContext(Context);
 
    const handleClick = (shop) => {
-      shopStore.changeShop(shop.id);
+      shopStore.changeShop(shop.id + 1);
    };
+
+   useEffect(() => {
+      pagesStore.changePage("Shop");
+
+      fetchMedicines(shopStore.currentShop).then((data) =>
+         shopStore.setMedicinesFetched(data)
+      );
+   }, [shopStore.currentShop]);
 
    return (
       <div className={cl.shops}>

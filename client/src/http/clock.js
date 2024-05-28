@@ -16,12 +16,10 @@ export const createMedicine = async (device) => {
    return data;
 };
 
-export const fetchMedicines = async (typeId, brandId, page, limit = 5) => {
+export const fetchMedicines = async (shopId) => {
    const { data } = await $host.get("api/medicine", {
       params: {
          shopId,
-         // page,
-         // limit,
       },
    });
    return data;

@@ -55,27 +55,30 @@ class ShopStore {
       },
    ];
 
-   currentShop = 0;
+   // currentShop = 1;
 
    constructor() {
-      this.shops;
       this.shopsFetched = [];
-      this.medicinesFetched = [];
+      this.medicinesFetched = {};
+      this.currentShop = 1;
       makeAutoObservable(this);
    }
 
-   get shopsFetched() {
-      return this.shopsFetched;
-   }
-   get medicinesFetched() {
-      return this.medicinesFetched;
-   }
+   // get shops() {
+   //    return this.shops;
+   // }
+   // get shopsFetched() {
+   //    return this.shopsFetched;
+   // }
+   // get medicinesFetched() {
+   //    return this.medicinesFetched;
+   // }
 
-   setShopsFetched(shops) {
-      this.shops = shops;
+   setShopsFetched(shopsFetched) {
+      this.shopsFetched = shopsFetched;
    }
    setMedicinesFetched(medicines) {
-      this.medicines = medicines;
+      this.medicinesFetched = medicines;
    }
 
    changeShop(payload) {
