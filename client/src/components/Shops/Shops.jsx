@@ -8,7 +8,7 @@ const Shops = observer(() => {
    const { pagesStore, shopStore } = useContext(Context);
 
    const handleClick = (shop) => {
-      shopStore.changeShop(shop.id + 1);
+      shopStore.changeShop(shop.id);
    };
 
    useEffect(() => {
@@ -23,14 +23,14 @@ const Shops = observer(() => {
       <div className={cl.shops}>
          <h2>SHOPS</h2>
 
-         {shopStore.shops.map((shop) => (
+         {shopStore.shopsFetched.map((shop) => (
             <div
                className={cl.shop}
                onClick={() => handleClick(shop)}
                key={shop.name}
             >
                <p className={cl.shop_name}>{shop.name}</p>
-               <p>Адрес: {shop.address}</p>
+               <p>Address: {shop.address}</p>
             </div>
          ))}
       </div>

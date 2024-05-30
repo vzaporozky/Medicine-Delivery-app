@@ -21,22 +21,21 @@ class ShopStore {
 
    toggleFavorite = (el, medicine) => {
       medicine.isFavorite = !medicine.isFavorite;
+      const medicines = this.medicinesFetched.rows;
 
       if (medicine.isFavorite) {
-         const shop = this.shops[this.currentShop];
-         const index = shop.medicines.findIndex((item) => item == medicine);
+         const index = medicines.findIndex((item) => item == medicine);
 
          if (index != -1) {
-            const item = shop.medicines.splice(index, 1)[0];
-            shop.medicines.unshift(item);
+            const item = medicines.splice(index, 1)[0];
+            medicines.unshift(item);
          }
       } else {
-         const shop = this.shops[this.currentShop];
-         const index = shop.medicines.findIndex((item) => item == medicine);
+         const index = medicines.findIndex((item) => item == medicine);
 
          if (index != -1) {
-            const item = shop.medicines.splice(index, 1)[0];
-            shop.medicines.push(item);
+            const item = medicines.splice(index, 1)[0];
+            medicines.push(item);
          }
       }
    };

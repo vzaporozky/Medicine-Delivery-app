@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import cl from "./Drugs.module.css";
 import cartStore from "../../store/cartStore";
-import Button from "../../ui/Button/Button";
 import { Context } from "../../store";
+import { Image, Button } from "react-bootstrap";
 
 const Drugs = observer(() => {
    const { shopStore } = useContext(Context);
@@ -40,11 +40,12 @@ const Drugs = observer(() => {
             <div className={cl.medicines}>
                {medicinesFetched.rows.map((medicine) => (
                   <div className={cl.medicine} key={medicine.name}>
-                     <img
-                        className={cl.image}
-                        src="./src/assets/vitamin_c.jpg"
-                        alt="image"
+                     <Image
+                        width={200}
+                        height={200}
+                        src={"./src/assets/vitamin_c.jpg"}
                      />
+
                      <p>
                         {medicine.name}{" "}
                         <span style={{ color: "rgb(117, 117, 213)" }}>
@@ -52,7 +53,10 @@ const Drugs = observer(() => {
                         </span>
                      </p>
 
-                     <Button handleClick={() => handleClickAddToCart(medicine)}>
+                     <Button
+                        variant="outline-dark"
+                        handleClick={() => handleClickAddToCart(medicine)}
+                     >
                         Add to Cart
                      </Button>
 
