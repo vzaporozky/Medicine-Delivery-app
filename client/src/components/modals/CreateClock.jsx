@@ -1,4 +1,4 @@
-import Header from "../../components/header/Header";
+import Header from "../header/Header";
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../store";
@@ -12,7 +12,7 @@ import {
    Row,
 } from "react-bootstrap";
 
-const CreateDrug = ({ show, onHide }) => {
+const CreateClock = ({ show, onHide }) => {
    const { shopStore } = useContext(Context);
    const [name, setName] = useState("");
    const [price, setPrice] = useState(0);
@@ -55,7 +55,7 @@ const CreateDrug = ({ show, onHide }) => {
       <Modal show={show} onHide={onHide} centered>
          <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-               Add medicine
+               Add clock
             </Modal.Title>
          </Modal.Header>
          <Modal.Body>
@@ -80,12 +80,12 @@ const CreateDrug = ({ show, onHide }) => {
                      {/* {device.selectedBrand.name || "Choose type"} */}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                     {shopStore.medicines.map((medicine) => (
+                     {shopStore.clocks.map((clock) => (
                         <Dropdown.Item
-                        // onClick={() => shopStore.setSelectedBrand(medicine)}
-                        // key={medicine.id}
+                        // onClick={() => shopStore.setSelectedBrand(clock)}
+                        // key={clock.id}
                         >
-                           {medicine.name}
+                           {clock.name}
                         </Dropdown.Item>
                      ))}
                   </Dropdown.Menu>
@@ -94,13 +94,13 @@ const CreateDrug = ({ show, onHide }) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="mt-3"
-                  placeholder="Enter medicine name"
+                  placeholder="Enter clock name"
                />
                <Form.Control
                   value={price}
                   onChange={(e) => setPrice(Number(e.target.value))}
                   className="mt-3"
-                  placeholder="Enter the cost of the medicine"
+                  placeholder="Enter the cost of the clock"
                   type="number"
                />
                <Form.Control
@@ -160,4 +160,4 @@ const CreateDrug = ({ show, onHide }) => {
    );
 };
 
-export default CreateDrug;
+export default CreateClock;

@@ -11,13 +11,13 @@ export const fetchShops = async () => {
    return data;
 };
 
-export const createMedicine = async (device) => {
-   const { data } = await $authHost.post("api/medicine", device);
+export const createClock = async (device) => {
+   const { data } = await $authHost.post("api/clock", device);
    return data;
 };
 
-export const fetchMedicines = async (shopId) => {
-   const { data } = await $host.get("api/medicine", {
+export const fetchClocks = async (shopId) => {
+   const { data } = await $host.get("api/clock", {
       params: {
          shopId,
       },

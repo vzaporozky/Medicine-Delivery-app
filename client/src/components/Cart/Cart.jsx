@@ -22,28 +22,28 @@ const Cart = observer(() => {
       <div className={cl.cart}>
          <h2>CART</h2>
 
-         <div className={cl.medicines}>
-            {cartStore.cart.map((drug) => (
-               <div className={cl.medicine} key={drug.name + "s"}>
+         <div className={cl.clocks}>
+            {cartStore.cart.map((clock) => (
+               <div className={cl.clock} key={clock.name + "s"}>
                   <img
                      src="./src/assets/vitamin_c.jpg"
                      className={cl.image}
-                     alt="drug-image"
+                     alt="clock-image"
                   />
 
                   <div className={cl.description}>
-                     <h4>{drug.name}</h4>
-                     <p>{drug.price} грн.</p>
+                     <h4>{clock.name}</h4>
+                     <p>{clock.price} грн.</p>
                      <input
                         type="number"
                         name="quantity"
-                        value={drug.quantity}
-                        className={cl.medicine_quantity}
+                        value={clock.quantity}
+                        className={cl.clock_quantity}
                         onChange={(el) => {
                            cartStore.updateCartItemQuantity(
-                              drug.name,
+                              clock.name,
                               Number(el.target.value),
-                              drug.price
+                              clock.price
                            );
                         }}
                      />
@@ -51,7 +51,7 @@ const Cart = observer(() => {
 
                   <button
                      className={cl.remove}
-                     onClick={() => removeItemFromCart(drug.name)}
+                     onClick={() => removeItemFromCart(clock.name)}
                   >
                      X
                   </button>

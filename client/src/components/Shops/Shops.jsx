@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import cl from "./Shops.module.css";
 import { useContext, useEffect } from "react";
 import { Context } from "../../store";
-import { fetchMedicines } from "../../http/clock";
+import { fetchClocks } from "../../http/clock";
 
 const Shops = observer(() => {
    const { pagesStore, shopStore } = useContext(Context);
@@ -14,8 +14,8 @@ const Shops = observer(() => {
    useEffect(() => {
       pagesStore.changePage("Shop");
 
-      fetchMedicines(shopStore.currentShop).then((data) =>
-         shopStore.setMedicinesFetched(data)
+      fetchClocks(shopStore.currentShop).then((data) =>
+         shopStore.setClocksFetched(data)
       );
    }, [shopStore.currentShop]);
 

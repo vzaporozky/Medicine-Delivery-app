@@ -4,12 +4,12 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../../store";
 import { Button, Container } from "react-bootstrap";
 import CreateShop from "../../components/modals/CreateShop";
-import CreateDrug from "../../components/modals/CreateDrug";
+import CreateClock from "../../components/modals/CreateClock";
 
 const Admin = observer(() => {
    const { pagesStore } = useContext(Context);
    const [shopVisible, setShopVisible] = useState(false);
-   const [drugVisible, setDrugVisible] = useState(false);
+   const [clockVisible, setClockVisible] = useState(false);
 
    useEffect(() => {
       pagesStore.changePage("admin");
@@ -30,7 +30,7 @@ const Admin = observer(() => {
             <Button
                variant={"outline-dark"}
                className="mt-4 p-2"
-               onClick={() => setDrugVisible(true)}
+               onClick={() => setClockVisible(true)}
             >
                Добавить устройство
             </Button>
@@ -38,9 +38,9 @@ const Admin = observer(() => {
                show={shopVisible}
                onHide={() => setShopVisible(false)}
             />
-            <CreateDrug
-               show={drugVisible}
-               onHide={() => setDrugVisible(false)}
+            <CreateClock
+               show={clockVisible}
+               onHide={() => setClockVisible(false)}
             />
          </Container>
       </>

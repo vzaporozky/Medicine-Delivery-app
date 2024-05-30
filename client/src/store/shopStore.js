@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx";
 class ShopStore {
    constructor() {
       this.shopsFetched = [];
-      this.medicinesFetched = {};
+      this.clocksFetched = {};
       this.currentShop = 1;
       makeAutoObservable(this);
    }
@@ -11,36 +11,36 @@ class ShopStore {
    setShopsFetched(shopsFetched) {
       this.shopsFetched = shopsFetched;
    }
-   setMedicinesFetched(medicines) {
-      this.medicinesFetched = medicines;
+   setClocksFetched(clocks) {
+      this.clocksFetched = clocks;
    }
 
    changeShop(payload) {
       this.currentShop = payload;
    }
 
-   toggleFavorite = (el, medicine) => {
-      medicine.isFavorite = !medicine.isFavorite;
-      const medicines = this.medicinesFetched.rows;
+   toggleFavorite = (el, clock) => {
+      clock.isFavorite = !clock.isFavorite;
+      const clocks = this.clocksFetched.rows;
 
-      if (medicine.isFavorite) {
-         const index = medicines.findIndex((item) => item == medicine);
+      if (clock.isFavorite) {
+         const index = clocks.findIndex((item) => item == clock);
 
          if (index != -1) {
-            const item = medicines.splice(index, 1)[0];
-            medicines.unshift(item);
+            const item = clocks.splice(index, 1)[0];
+            clocks.unshift(item);
          }
       } else {
-         const index = medicines.findIndex((item) => item == medicine);
+         const index = clocks.findIndex((item) => item == clock);
 
          if (index != -1) {
-            const item = medicines.splice(index, 1)[0];
-            medicines.push(item);
+            const item = clocks.splice(index, 1)[0];
+            clocks.push(item);
          }
       }
    };
 
-   handleMouseEnter = (el, medicine) => {
+   handleMouseEnter = (el, clock) => {
       if (
          el.target &&
          el.target.childNodes[0] &&
@@ -48,11 +48,11 @@ class ShopStore {
       ) {
          const svg = el.target.childNodes[0].childNodes[0];
 
-         if (medicine.isFavorite == true) svg.style.fill = "white";
+         if (clock.isFavorite == true) svg.style.fill = "white";
          else svg.style.fill = "black";
       }
    };
-   handleMouseLeave = (el, medicine) => {
+   handleMouseLeave = (el, clock) => {
       if (
          el.target &&
          el.target.childNodes[0] &&
@@ -60,7 +60,7 @@ class ShopStore {
       ) {
          const svg = el.target.childNodes[0].childNodes[0];
 
-         if (medicine.isFavorite == true) svg.style.fill = "red";
+         if (clock.isFavorite == true) svg.style.fill = "red";
          else svg.style.fill = "black";
       }
    };

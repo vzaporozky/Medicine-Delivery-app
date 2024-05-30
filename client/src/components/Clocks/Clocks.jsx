@@ -1,32 +1,26 @@
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
-import cl from "./Drugs.module.css";
+import cl from "./Clocks.module.css";
 import cartStore from "../../store/cartStore";
 import { Context } from "../../store";
 import { Image, Button } from "react-bootstrap";
 
-const Drugs = observer(() => {
+const Clocks = observer(() => {
    const { shopStore } = useContext(Context);
-   const {
-      medicinesFetched,
-      handleMouseEnter,
-      handleMouseLeave,
-      toggleFavorite,
-   } = shopStore;
+   const { clocksFetched, handleMouseEnter, handleMouseLeave, toggleFavorite } =
+      shopStore;
 
-   const handleClickAddToCart = (medicine) => {
-      const foundItem = cartStore.cart.find(
-         (item) => item.name === medicine.name
-      );
+   const handleClickAddToCart = (clock) => {
+      const foundItem = cartStore.cart.find((item) => item.name === clock.name);
 
       if (foundItem) {
          cartStore.updateCartItemQuantity(
-            medicine.name,
+            clock.name,
             foundItem.quantity + 1,
-            medicine.price
+            clock.price
          );
       } else {
-         cartStore.addToCart({ ...medicine, quantity: 1 });
+         cartStore.addToCart({ ...clock, quantity: 1 });
       }
 
       localStorage.setItem("cart", JSON.stringify(cartStore.cart));
@@ -34,12 +28,12 @@ const Drugs = observer(() => {
 
    return (
       <div className={cl.drugs}>
-         <h2>MEDICINES</h2>
+         <h2>CLOCKS</h2>
 
-         {medicinesFetched.rows && (
-            <div className={cl.medicines}>
-               {medicinesFetched.rows.map((medicine) => (
-                  <div className={cl.medicine} key={medicine.name}>
+         {clocksFetched.rows && (
+            <div className={cl.clocks}>
+               {clocksFetched.rows.map((clock) => (
+                  <div className={cl.clock} key={clock.name}>
                      <Image
                         width={200}
                         height={200}
@@ -47,28 +41,26 @@ const Drugs = observer(() => {
                      />
 
                      <p>
-                        {medicine.name}{" "}
+                        {clock.name}{" "}
                         <span style={{ color: "rgb(117, 117, 213)" }}>
-                           {medicine.price} грн.
+                           {clock.price} грн.
                         </span>
                      </p>
 
                      <Button
                         variant="outline-dark"
-                        handleClick={() => handleClickAddToCart(medicine)}
+                        handleClick={() => handleClickAddToCart(clock)}
                      >
                         Add to Cart
                      </Button>
 
                      <div
                         className={`${cl.favorite_button} ${
-                           medicine.isFavorite
-                              ? cl.isFavorite
-                              : cl.isNotFavorite
+                           clock.isFavorite ? cl.isFavorite : cl.isNotFavorite
                         }`}
-                        onClick={(el) => toggleFavorite(el, medicine)}
-                        onMouseEnter={(el) => handleMouseEnter(el, medicine)}
-                        onMouseLeave={(el) => handleMouseLeave(el, medicine)}
+                        onClick={(el) => toggleFavorite(el, clock)}
+                        onMouseEnter={(el) => handleMouseEnter(el, clock)}
+                        onMouseLeave={(el) => handleMouseLeave(el, clock)}
                      >
                         <svg
                            version="1.0"
@@ -106,4 +98,4 @@ const Drugs = observer(() => {
    );
 });
 
-export default Drugs;
+export default Clocks;

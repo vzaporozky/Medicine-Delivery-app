@@ -1,20 +1,19 @@
-const { Medicine } = require("../models/models");
+const { Clock } = require("../models/models");
 const ApiError = require("../error/ApiError");
 
-class medicineControllers {
+class clockControllers {
    async createOne(req, res, next) {
       try {
          let { name, price, shopId, isFavorite } = req.body;
 
-         const medicine = await Medicine.create({
+         const clock = await Clock.create({
             name,
             price,
             shopId,
             isFavorite,
          });
-         // console.log(shopId);
 
-         return res.json(medicine);
+         return res.json(clock);
       } catch (e) {
          next(ApiError.badRequest(e.message));
       }
@@ -22,22 +21,21 @@ class medicineControllers {
 
    async createFew(req, res, next) {
       try {
-         let { medicines } = req.body;
-         // let { name, price, shopId }
-         const createdMedicine = [];
+         let { clocks } = req.body;
+         const createdClock = [];
 
-         for (let item of medicines) {
+         for (let item of clocks) {
             let { name, price, isFavorite, shopId } = item;
-            let medicine = await Medicine.create({
+            let clock = await Clock.create({
                name,
                price,
                shopId,
                isFavorite,
             });
-            createdMedicine.push(medicine);
+            createdClock.push(clock);
          }
 
-         res.json(createdMedicine);
+         res.json(createdClock);
       } catch (e) {
          next(ApiError.badRequest(e.message));
       }
@@ -46,18 +44,18 @@ class medicineControllers {
    async getOne(req, res, next) {
       try {
          const { shopId } = req.params;
-         const medicine = await Medicine.findByPk(shopId);
-         console.log(shopId); ///////////
+         const clock = await Clock.findByPk(shopId);
+         console.log(shopId);
 
-         if (!medicine) {
-            throw ApiError.notFound(`Магазин с ID ${shopId} не найден`);
+         if (!clock) {
+            throw ApiError.notFound(`Shop with ID ${shopId} not found`);
          }
 
-         const medicines = await Medicine.findAll({
+         const clocks = await Clock.findAll({
             where: { shopId },
          });
 
-         res.json(medicines);
+         res.json(clocks);
       } catch (error) {
          next(error);
       }
@@ -66,22 +64,22 @@ class medicineControllers {
    async getAll(req, res) {
       try {
          let { shopId } = req.query;
-         let medicines;
+         let clocks;
 
          if (!shopId) {
-            medicines = await Medicine.findAndCountAll();
+            clocks = await Clock.findAndCountAll();
          }
          if (shopId) {
-            medicines = await Medicine.findAndCountAll({
+            clocks = await Clock.findAndCountAll({
                where: { shopId },
             });
          }
 
-         return res.json(medicines);
+         return res.json(clocks);
       } catch (error) {
          next(error);
       }
    }
 }
 
-module.exports = new medicineControllers();
+module.exports = new clockControllers();
