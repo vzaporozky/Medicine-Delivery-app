@@ -4,6 +4,7 @@ import cl from "./Clocks.module.css";
 import cartStore from "../../store/cartStore";
 import { Context } from "../../store";
 import { Image, Button } from "react-bootstrap";
+import { REACT_APP_API_URL } from "../../utils/consts";
 
 const Clocks = observer(() => {
    const { shopStore } = useContext(Context);
@@ -37,7 +38,7 @@ const Clocks = observer(() => {
                      <Image
                         width={200}
                         height={200}
-                        src={"./src/assets/vitamin_c.jpg"}
+                        // src={REACT_APP_API_URL + clock.img}
                      />
 
                      <p>

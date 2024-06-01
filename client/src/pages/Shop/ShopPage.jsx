@@ -14,9 +14,6 @@ const ShopPage = observer(() => {
       pagesStore.changePage("Shop");
 
       fetchShops().then((data) => shopStore.setShopsFetched(data));
-      fetchClocks(shopStore.currentShop).then((data) =>
-         shopStore.setClocksFetched(data)
-      );
    }, []);
 
    return (

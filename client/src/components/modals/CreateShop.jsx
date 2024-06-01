@@ -18,7 +18,7 @@ const CreateShop = ({ show, onHide }) => {
       <Modal show={show} onHide={onHide} centered>
          <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-               Добавить тип
+               Add shop
             </Modal.Title>
          </Modal.Header>
          <Modal.Body>
@@ -26,16 +26,16 @@ const CreateShop = ({ show, onHide }) => {
                <Form.Control
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
-                  placeholder={"Введите название типа"}
+                  placeholder={"Enter shop name"}
                />
             </Form>
          </Modal.Body>
          <Modal.Footer>
             <Button variant="outline-danger" onClick={onHide}>
-               Закрыть
+               Close
             </Button>
             <Button variant="outline-success" onClick={addShop}>
-               Добавить
+               Add
             </Button>
          </Modal.Footer>
       </Modal>

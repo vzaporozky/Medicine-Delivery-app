@@ -25,14 +25,14 @@ const Admin = observer(() => {
                className="mt-4 p-2"
                onClick={() => setShopVisible(true)}
             >
-               Добавить бренд
+               Add new shop
             </Button>
             <Button
                variant={"outline-dark"}
                className="mt-4 p-2"
                onClick={() => setClockVisible(true)}
             >
-               Добавить устройство
+               Add new clock
             </Button>
             <CreateShop
                show={shopVisible}

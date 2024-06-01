@@ -61,26 +61,9 @@ const CreateClock = ({ show, onHide }) => {
          <Modal.Body>
             <Form>
                <Dropdown className="mt-2 mb-2">
-                  <Dropdown.Toggle>
-                     {/* {device.selectedType.name || "Choose type"} */}
-                  </Dropdown.Toggle>
+                  <Dropdown.Toggle>{"Choose shop"}</Dropdown.Toggle>
                   <Dropdown.Menu>
-                     {/* {device.types.map((type) => (
-                        <Dropdown.Item
-                           // onClick={() => device.setSelectedType(type)}
-                           key={type.id}
-                        >
-                           {type.name}
-                        </Dropdown.Item>
-                     ))} */}
-                  </Dropdown.Menu>
-               </Dropdown>
-               <Dropdown className="mt-2 mb-2">
-                  <Dropdown.Toggle>
-                     {/* {device.selectedBrand.name || "Choose type"} */}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                     {shopStore.clocks.map((clock) => (
+                     {shopStore.shopsFetched.map((clock) => (
                         <Dropdown.Item
                         // onClick={() => shopStore.setSelectedBrand(clock)}
                         // key={clock.id}

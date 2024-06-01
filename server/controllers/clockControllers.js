@@ -25,12 +25,13 @@ class clockControllers {
          const createdClock = [];
 
          for (let item of clocks) {
-            let { name, price, isFavorite, shopId } = item;
+            let { name, price, isFavorite, shopId, img } = item;
             let clock = await Clock.create({
                name,
                price,
                shopId,
                isFavorite,
+               img,
             });
             createdClock.push(clock);
          }
