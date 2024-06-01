@@ -5,7 +5,7 @@ import { useContext, useEffect } from "react";
 import { Context } from "../../store";
 
 const Submit = observer(() => {
-   const { cartStore } = useContext(Context);
+   const { cartStore, shopStore } = useContext(Context);
 
    useEffect(() => {
       const cart = JSON.parse(localStorage.getItem("cart"));
@@ -17,7 +17,9 @@ const Submit = observer(() => {
 
    return (
       <div className={cl.submit_form}>
-         <p className={cl.price}>Total price: {cartStore.totalPrice} грн.</p>
+         <p className={cl.price}>
+            Total price: {cartStore.totalPrice} {shopStore.currency}.
+         </p>
          <Button>Submit</Button>
       </div>
    );

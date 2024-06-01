@@ -5,6 +5,7 @@ class ShopStore {
       this.shopsFetched = [];
       this.clocksFetched = {};
       this.currentShop = 1;
+      this.currency = "$";
       makeAutoObservable(this);
    }
 
@@ -13,6 +14,9 @@ class ShopStore {
    }
    setClocksFetched(clocks) {
       this.clocksFetched = clocks;
+   }
+   setCurrency(currency) {
+      this.currency = currency;
    }
 
    changeShop(payload) {

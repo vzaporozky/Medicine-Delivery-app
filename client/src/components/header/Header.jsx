@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Context } from "../../store";
 
@@ -10,7 +10,28 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 const Header = observer(() => {
-   const { userStore } = useContext(Context);
+   const [currency, setCurrency] = useState("eng");
+   const { userStore, shopStore } = useContext(Context);
+
+   useEffect(() => {
+      if (shopStore.currency != "$") {
+         setCurrency("ukr");
+      } else {
+         setCurrency("eng");
+      }
+   }, []);
+
+   const changeCurrency = (event) => {
+      if (currency == "eng") {
+         setCurrency("ukr");
+         shopStore.setCurrency("грн");
+         localStorage.setItem("currency", "грн");
+      } else {
+         setCurrency("eng");
+         shopStore.setCurrency("$");
+         localStorage.setItem("currency", "$");
+      }
+   };
 
    const logOut = (event) => {
       userStore.setUser({});
@@ -27,6 +48,9 @@ const Header = observer(() => {
 
             {userStore.isAuth ? (
                <Nav className="ml-auto">
+                  <Button variant={"outline-warning"} onClick={changeCurrency}>
+                     {currency}
+                  </Button>
                   <Nav.Link as={Link} to="/cart">
                      Cart
                   </Nav.Link>
@@ -44,6 +68,12 @@ const Header = observer(() => {
                </Nav>
             ) : (
                <Nav className="ml-auto">
+                  <Button variant={"outline-warning"} onClick={changeCurrency}>
+                     {currency}
+                  </Button>
+                  <Nav.Link as={Link} to="/cart">
+                     Cart
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/login">
                      Login
                   </Nav.Link>

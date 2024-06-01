@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { Context } from "../../store";
 
 const Cart = observer(() => {
-   const { cartStore } = useContext(Context);
+   const { cartStore, shopStore } = useContext(Context);
 
    useEffect(() => {
       const cartStored = localStorage.getItem("cart");
@@ -33,7 +33,9 @@ const Cart = observer(() => {
 
                   <div className={cl.description}>
                      <h4>{clock.name}</h4>
-                     <p>{clock.price} грн.</p>
+                     <p>
+                        {clock.price} {shopStore.currency}
+                     </p>
                      <input
                         type="number"
                         name="quantity"

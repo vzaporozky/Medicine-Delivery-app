@@ -11,12 +11,12 @@ import { useNavigate } from "react-router-dom";
 const CartPage = observer(() => {
    const { pagesStore, userStore } = useContext(Context);
 
-   if (!userStore.isAuth) {
-      const navigate = useNavigate();
-      useEffect(() => {
-         navigate("/login");
-      }, []);
-   }
+   // if (!userStore.isAuth) {
+   //    const navigate = useNavigate();
+   //    useEffect(() => {
+   //       navigate("/login");
+   //    }, []);
+   // }
    useEffect(() => {
       pagesStore.changePage("Cart");
    }, []);

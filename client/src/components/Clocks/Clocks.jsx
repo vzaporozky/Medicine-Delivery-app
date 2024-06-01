@@ -38,13 +38,14 @@ const Clocks = observer(() => {
                      <Image
                         width={200}
                         height={200}
+                        src={"./src/assets/static/" + clock.img}
                         // src={REACT_APP_API_URL + clock.img}
                      />
 
                      <p>
                         {clock.name}{" "}
                         <span style={{ color: "rgb(117, 117, 213)" }}>
-                           {clock.price} грн.
+                           {clock.price} {shopStore.currency}
                         </span>
                      </p>
 

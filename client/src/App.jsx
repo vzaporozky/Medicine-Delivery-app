@@ -9,10 +9,15 @@ import { Spinner } from "react-bootstrap";
 import { check } from "./http/userAPI";
 
 const App = observer(() => {
-   const { userStore, pagesStore } = useContext(Context);
+   const { userStore, pagesStore, shopStore } = useContext(Context);
 
    useEffect(() => {
       const token = localStorage.getItem("token");
+      const currency = localStorage.getItem("currency");
+
+      if (currency != "$") shopStore.setCurrency("грн");
+
+      // localStorage.setItem("currency", "$");
 
       if (token) {
          check()
