@@ -51,7 +51,7 @@ const Clocks = observer(() => {
 
                      <Button
                         variant="outline-dark"
-                        handleClick={() => handleClickAddToCart(clock)}
+                        onClick={() => handleClickAddToCart(clock)}
                      >
                         Add to Cart
                      </Button>

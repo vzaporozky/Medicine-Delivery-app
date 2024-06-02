@@ -26,7 +26,8 @@ const Cart = observer(() => {
             {cartStore.cart.map((clock) => (
                <div className={cl.clock} key={clock.name + "s"}>
                   <img
-                     src="./src/assets/vitamin_c.jpg"
+                     // src={REACT_APP_API_URL + clock.img}
+                     src={"./src/assets/static/" + clock.img}
                      className={cl.image}
                      alt="clock-image"
                   />

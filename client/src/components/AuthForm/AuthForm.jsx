@@ -16,6 +16,9 @@ const AuthForm = observer(() => {
    const { userStore } = useContext(Context);
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
+   const [isValid, setIsValid] = useState(false);
+   const EMAIL_REGEXP =
+      /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
    const location = useLocation();
    const isLogin = location.pathname === LOGIN_ROUTE;
@@ -23,6 +26,8 @@ const AuthForm = observer(() => {
    const navigate = useNavigate();
 
    const handleClick = async (event) => {
+      if (!isValid) return;
+
       try {
          let data;
          if (isLogin) {
@@ -41,6 +46,20 @@ const AuthForm = observer(() => {
       }
    };
 
+   function isEmailValid(value) {
+      return EMAIL_REGEXP.test(value);
+   }
+
+   function onInput(event) {
+      if (isEmailValid(event.target.value)) {
+         setIsValid(true);
+         event.target.style.borderColor = "green";
+      } else {
+         setIsValid(false);
+         event.target.style.borderColor = "red";
+      }
+   }
+
    return (
       <div className={cl.form}>
          <h2 className="m-auto mb-1">{isLogin ? "Login" : "Registration"}</h2>
@@ -54,6 +73,7 @@ const AuthForm = observer(() => {
                      value={email}
                      onChange={(e) => setEmail(e.target.value)}
                      placeholder="Enter email"
+                     onInput={onInput}
                   />
                </Form.Group>
 
