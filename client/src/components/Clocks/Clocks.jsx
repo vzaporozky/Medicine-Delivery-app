@@ -38,8 +38,7 @@ const Clocks = observer(() => {
                      <Image
                         width={200}
                         height={200}
-                        src={"./src/assets/static/" + clock.img}
-                        // src={REACT_APP_API_URL + clock.img}
+                        src={REACT_APP_API_URL + "/" + clock.img}
                      />
 
                      <p>

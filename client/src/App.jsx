@@ -17,8 +17,6 @@ const App = observer(() => {
 
       if (currency != "$") shopStore.setCurrency("грн");
 
-      // localStorage.setItem("currency", "$");
-
       if (token) {
          check()
             .then((data) => {

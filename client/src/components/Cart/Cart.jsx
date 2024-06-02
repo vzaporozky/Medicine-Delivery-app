@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import cl from "./Cart.module.css";
 import { useContext, useEffect } from "react";
 import { Context } from "../../store";
+import { REACT_APP_API_URL } from "../../utils/consts";
 
 const Cart = observer(() => {
    const { cartStore, shopStore } = useContext(Context);
@@ -26,8 +27,7 @@ const Cart = observer(() => {
             {cartStore.cart.map((clock) => (
                <div className={cl.clock} key={clock.name + "s"}>
                   <img
-                     // src={REACT_APP_API_URL + clock.img}
-                     src={"./src/assets/static/" + clock.img}
+                     src={REACT_APP_API_URL + "/" + clock.img}
                      className={cl.image}
                      alt="clock-image"
                   />
